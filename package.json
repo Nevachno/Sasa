@@ -1,0 +1,38 @@
+{
+  "name": "sasavot-community",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SASAVOT community media platform",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch server.js",
+    "start": "node server.js",
+    "start:persistent": "launchctl bootstrap gui/$(id -u) ./scripts/com.sasavot.community.plist || launchctl kickstart -k gui/$(id -u)/com.sasavot.community",
+    "stop:persistent": "launchctl bootout gui/$(id -u)/com.sasavot.community",
+    "test": "node --test",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:seed": "node prisma/seed.js"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
+  "dependencies": {
+    "@phosphor-icons/web": "^2.1.2",
+    "@prisma/client": "^6.14.0",
+    "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.7",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.0.1",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.2"
+  },
+  "devDependencies": {
+    "prisma": "^6.14.0",
+    "supertest": "^7.1.4"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
